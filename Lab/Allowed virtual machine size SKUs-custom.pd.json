@@ -19,10 +19,10 @@
                     }
                 },
                 {
-                    "not": {
-                        "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku",
-                        "in": "[parameters('listOfAllowedOSs')]"
-                    }
+                "not": {
+                    "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku",
+                    "in": "[parameters('listOfAllowedOSs')]"
+                }
                 }
             ]
         }
