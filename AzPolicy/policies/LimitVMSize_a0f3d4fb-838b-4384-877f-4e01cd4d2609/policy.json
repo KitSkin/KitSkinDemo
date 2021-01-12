@@ -1,0 +1,37 @@
+{
+ "properties": {
+  "displayName": "LimitVMSize",
+  "policyType": "Custom",
+  "mode": "All",
+  "metadata": {
+   "category": "Compute",
+   "createdBy": "717e21bf-0d2f-4d89-b538-56518864dac0",
+   "createdOn": "2021-01-12T20:03:07.5258066Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {},
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "Microsoft.Compute/virtualMachines"
+     },
+     {
+      "not": {
+       "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku",
+       "equals": "2019-Datacenter"
+      }
+     }
+    ]
+   },
+   "then": {
+    "effect": "deny"
+   }
+  }
+ },
+ "id": "/subscriptions/24b7daad-dc43-4fbd-9b7a-430c44d524eb/providers/Microsoft.Authorization/policyDefinitions/a0f3d4fb-838b-4384-877f-4e01cd4d2609",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "a0f3d4fb-838b-4384-877f-4e01cd4d2609"
+}

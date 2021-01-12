@@ -1,0 +1,140 @@
+{
+ "properties": {
+  "displayName": "Add rule to NSGs",
+  "policyType": "Custom",
+  "mode": "All",
+  "description": "Add a rullle to all NSGs deployed.",
+  "metadata": {
+   "category": "Network",
+   "createdBy": "717e21bf-0d2f-4d89-b538-56518864dac0",
+   "createdOn": "2021-01-11T19:13:25.9661482Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {
+   "ruleName": {
+    "type": "String",
+    "metadata": {
+     "displayName": "NSG rule name",
+     "description": "The name of the NSG rule to append. Must not contain spaces."
+    }
+   },
+   "description": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Rule description",
+     "description": "A description for this rule. Restricted to 140 chars."
+    }
+   },
+   "priority": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Rule priority",
+     "description": "The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule."
+    },
+    "defaultValue": "1000"
+   },
+   "direction": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Traffic direction",
+     "description": "The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic."
+    },
+    "allowedValues": [
+     "Inbound",
+     "Outbound"
+    ]
+   },
+   "access": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Allow or Deny",
+     "description": "The network traffic is allowed or denied."
+    },
+    "allowedValues": [
+     "Allow",
+     "Deny"
+    ]
+   },
+   "protocol": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Protocol",
+     "description": "Network protocol this rule applies to."
+    },
+    "allowedValues": [
+     "*",
+     "Tcp",
+     "Udp"
+    ]
+   },
+   "sourceAddressPrefix": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Source IP prefix",
+     "description": "The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Service tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from."
+    }
+   },
+   "destinationAddressPrefix": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Destination IP prefix",
+     "description": "The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Service tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used."
+    }
+   },
+   "sourcePortRange": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Source Port",
+     "description": "The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports."
+    }
+   },
+   "destinationPortRange": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Destination Port",
+     "description": "The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports."
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "Microsoft.Network/networkSecurityGroups"
+     },
+     {
+      "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].name",
+      "notEquals": "[parameters('ruleName')]"
+     }
+    ]
+   },
+   "then": {
+    "effect": "append",
+    "details": [
+     {
+      "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+      "value": {
+       "name": "[parameters('ruleName')]",
+       "properties": {
+        "priority": "[parameters('priority')]",
+        "access": "[parameters('access')]",
+        "direction": "[parameters('direction')]",
+        "sourceAddressPrefix": "[parameters('sourceAddressPrefix')]",
+        "sourcePortRange": "[parameters('sourcePortRange')]",
+        "destinationAddressPrefix": "[parameters('destinationAddressPrefix')]",
+        "destinationPortRange": "[parameters('destinationPortRange')]",
+        "protocol": "[parameters('protocol')]",
+        "description": "[parameters('description')]"
+       }
+      }
+     }
+    ]
+   }
+  }
+ },
+ "id": "/subscriptions/24b7daad-dc43-4fbd-9b7a-430c44d524eb/providers/Microsoft.Authorization/policyDefinitions/d7e13a94-01d8-42a7-b1ae-c272d2668f86",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "d7e13a94-01d8-42a7-b1ae-c272d2668f86"
+}

@@ -1,0 +1,59 @@
+{
+ "sku": {
+  "name": "A0",
+  "tier": "Free"
+ },
+ "properties": {
+  "displayName": "Allow RDP on all NSGs",
+  "policyDefinitionId": "/subscriptions/24b7daad-dc43-4fbd-9b7a-430c44d524eb/providers/Microsoft.Authorization/policyDefinitions/d7e13a94-01d8-42a7-b1ae-c272d2668f86",
+  "scope": "/subscriptions/24b7daad-dc43-4fbd-9b7a-430c44d524eb",
+  "notScopes": [],
+  "parameters": {
+   "ruleName": {
+    "value": "Allow-RDP-by-Policy"
+   },
+   "description": {
+    "value": "Allow RDP inbound by Policy"
+   },
+   "direction": {
+    "value": "Inbound"
+   },
+   "access": {
+    "value": "Allow"
+   },
+   "protocol": {
+    "value": "Tcp"
+   },
+   "sourceAddressPrefix": {
+    "value": "*"
+   },
+   "destinationAddressPrefix": {
+    "value": "VirtualNetwork"
+   },
+   "sourcePortRange": {
+    "value": "*"
+   },
+   "destinationPortRange": {
+    "value": "3389"
+   }
+  },
+  "metadata": {
+   "assignedBy": "KSkinner@opsgility.com Skinner",
+   "parameterScopes": {},
+   "createdBy": "717e21bf-0d2f-4d89-b538-56518864dac0",
+   "createdOn": "2021-01-11T19:16:32.163485Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "enforcementMode": "Default"
+ },
+ "identity": {
+  "principalId": "6b87a5e5-4996-41d6-a673-a03962dc949d",
+  "tenantId": "bd95e072-aa98-4dde-a381-fb3081415076",
+  "type": "SystemAssigned"
+ },
+ "id": "/subscriptions/24b7daad-dc43-4fbd-9b7a-430c44d524eb/providers/Microsoft.Authorization/policyAssignments/a67aa847bad247209e35228f",
+ "type": "Microsoft.Authorization/policyAssignments",
+ "name": "a67aa847bad247209e35228f",
+ "location": "northcentralus"
+}
