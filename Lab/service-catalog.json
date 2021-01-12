@@ -1,0 +1,115 @@
+{
+  "if": {
+    "not": {
+      "anyOf": [
+        {
+          "source": "action",
+          "like": "Microsoft.Resources/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Compute/availabilitySets/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Compute/virtualMachines/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Compute/virtualMachines/extensions/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Compute/virtualMachines/locations/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Compute/virtualMachines/disks/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Compute/virtualMachines/diagnosticSettings/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Compute/virtualMachines/metricDefinitions/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Compute/virtualMachines/images/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Compute/disks/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Network/virtualNetworks/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Network/routeTables/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Network/loadBalancers/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Network/networkSecurityGroups/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Network/publicIPAddresses/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Network/networkInterfaces/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Network/operations/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Network/locations/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Storage/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Security/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Authorization/roleAssignments/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Insights/activityLogAlerts/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Insights/actionGroups/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Web/sites/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.Web/serverfarms/*"
+        },
+        {
+          "source": "action",
+          "like": "Microsoft.DBforMySQL/*"
+        }
+      ]
+    }
+  },
+  "then" : {
+    "effect" : "deny"
+  }
+}
