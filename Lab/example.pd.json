@@ -1,0 +1,28 @@
+{
+    "properties": {
+        "displayName": "Limit VM Size",
+        "description": "Details here",
+        "mode": "All",
+        "parameters": {
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                  {
+                    "field": "type",
+                    "equals": "Microsoft.Compute/virtualMachines"
+                  },
+                  {
+                      "not": {
+                          "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.sku",
+                          "equals": "2019-Datacenter"
+                      }
+                  }
+                ]
+              },
+              "then": {
+                "effect": "Deny"
+              }
+        }
+    }
+}
